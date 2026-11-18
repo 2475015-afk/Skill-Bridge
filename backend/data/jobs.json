@@ -1,0 +1,42 @@
+{
+  "data_analyst": {
+    "title": "Data Analyst",
+    "description": "Transforms raw data into actionable business intelligence using querying, statistical modeling, and dashboards.",
+    "skills": ["python", "sql", "pandas", "excel", "statistics", "power bi", "data visualization", "tableau"]
+  },
+  "frontend_dev": {
+    "title": "Frontend Developer",
+    "description": "Designs and builds responsive, interactive client-side web user interfaces.",
+    "skills": ["html", "css", "javascript", "react", "git", "responsive design", "rest api", "tailwind"]
+  },
+  "backend_dev": {
+    "title": "Backend Developer",
+    "description": "Engineers scalable server-side systems, RESTful APIs, and database architectures.",
+    "skills": ["python", "sql", "flask", "rest api", "git", "docker", "database design", "fastapi"]
+  },
+  "ml_engineer": {
+    "title": "Machine Learning Engineer",
+    "description": "Researches, trains, and deploys predictive and generative machine learning models.",
+    "skills": ["python", "machine learning", "numpy", "pandas", "scikit-learn", "statistics", "deep learning", "pytorch"]
+  },
+  "fullstack_dev": {
+    "title": "Full Stack Developer",
+    "description": "Masters end-to-end development covering front-end interfaces, server architectures, and databases.",
+    "skills": ["html", "css", "javascript", "react", "python", "flask", "sql", "git", "rest api", "docker"]
+  },
+  "devops_engineer": {
+    "title": "DevOps & Cloud Engineer",
+    "description": "Automates CI/CD pipelines, container orchestration, and resilient cloud infrastructures.",
+    "skills": ["linux", "docker", "kubernetes", "git", "ci/cd", "aws", "python", "bash", "terraform"]
+  },
+  "cybersecurity_analyst": {
+    "title": "Cybersecurity Analyst",
+    "description": "Protects IT infrastructures, audits vulnerabilities, and performs penetration testing.",
+    "skills": ["networking", "linux", "python", "wireshark", "ethical hacking", "cryptography", "sql", "firewalls"]
+  },
+  "mobile_dev": {
+    "title": "Mobile App Developer",
+    "description": "Develops native and cross-platform mobile apps for iOS and Android.",
+    "skills": ["javascript", "react native", "flutter", "git", "rest api", "mobile ui/ux", "firebase", "sqlite"]
+  }
+}

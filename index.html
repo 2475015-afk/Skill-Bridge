@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillBridge — Personalized Skill Gap Analyzer & Learning Roadmap</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- Chart.js for Responsive Canvas Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="bg-ambient-glow"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#overview" class="nav-brand">
+        <span class="brand-icon">🌉</span>
+        <span class="brand-text">Skill<span>Bridge</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="main-nav-links">
+          <li><a href="#overview" class="nav-link active">Overview</a></li>
+          <li><a href="#analyzer" class="nav-link">Live Analyzer</a></li>
+          <li><a href="#presentation" class="nav-link">Presentation Deck</a></li>
+          <li><a href="#architecture" class="nav-link">Architecture</a></li>
+          <li><a href="#comparison" class="nav-link">Comparison</a></li>
+          <li><a href="#timeline" class="nav-link">Timeline</a></li>
+          <li><a href="#ai-mentor" class="nav-link">AI Advisor</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="engine-mode-pill" id="engine-mode-badge" title="Click to toggle between Client Engine and Flask API">
+          <span class="status-dot client"></span> Client Engine (Active)
+        </div>
+        <a href="#analyzer" class="cta-button-nav">Try Analyzer ⚡</a>
+        <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="overview">
+    <div class="container">
+      <div class="hero-badge-pill">
+        <span>🚀</span> 3rd Year Capstone Project • Live Prototype
+      </div>
+      
+      <h1 class="hero-title">
+        Bridging the Gap Between <br />
+        <span class="gradient-text">Classroom &amp; Industry Requirements</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Find out exactly what technical skills you are missing for your target career role. 
+        Get an instant quantitative match score, intelligent synonym normalization, 
+        and a prioritized step-by-step roadmap with 100% free learning resources.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#analyzer" class="btn-primary">
+          <span>⚡ Analyze Your Skill Gap</span>
+        </a>
+        <a href="#presentation" class="btn-secondary">
+          <span>🖥️ View Project Deck (16 Slides)</span>
+        </a>
+      </div>
+
+      <div class="hero-stats-row">
+        <div class="hero-stat-card">
+          <div class="num">8+</div>
+          <div class="label">Curated Job Roles</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="num">40+</div>
+          <div class="label">Normalized Aliases</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="num">100%</div>
+          <div class="label">Verified Free Tutorials</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="num">&lt; 50ms</div>
+          <div class="label">Instant Gap Computation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Live Skill Gap Analyzer -->
+  <section class="section" id="analyzer">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Interactive Engine</span>
+        <h2 class="section-title">Personalized Skill Gap Analyzer</h2>
+        <p class="section-desc">
+          Select your target career path and enter the tools or skills you currently possess. 
+          Our normalization engine maps synonyms (e.g. <code>postgres</code> &rarr; <code>SQL</code>) 
+          and generates your customized roadmap.
+        </p>
+      </div>
+
+      <!-- Main Input Card -->
+      <div class="analyzer-card">
+        <form id="analyze-form">
+          
+          <!-- Target Job Field -->
+          <div class="form-group">
+            <div class="form-label">
+              <label for="target_job">🎯 1. Select Your Target Job Role</label>
+              <span class="hint">Benchmarked against real 2026 hiring standards</span>
+            </div>
+            <select id="target_job" class="custom-select" required>
+              <option value="">-- Choose Your Target Role --</option>
+            </select>
+            <!-- Dynamic Role Preview Card -->
+            <div id="selected-role-preview" class="role-preview-container hidden"></div>
+          </div>
+
+          <!-- Current Skills Field -->
+          <div class="form-group">
+            <div class="form-label">
+              <label for="current_skills">🛠️ 2. Enter Your Current Technical Skills</label>
+              <span class="hint">Comma-separated (e.g., python, sql, git, react)</span>
+            </div>
+            <input 
+              type="text" 
+              id="current_skills" 
+              class="custom-input" 
+              placeholder="e.g. python, html, css, sql, git, pandas" 
+              autocomplete="off"
+              required 
+            />
+
+            <!-- Helper Tools: Quick Chips & Demo Profiles -->
+            <div class="quick-input-helpers">
+              <div class="helper-title">Quick-Add Popular Skills:</div>
+              <div class="chips-row" id="popular-skills-chips"></div>
+
+              <div class="helper-title">Or Try a Demo Student Profile:</div>
+              <div class="chips-row" id="sample-profiles-container"></div>
+            </div>
+
+            <!-- Resume / Bio Auto-Scanner -->
+            <div class="resume-scanner-wrapper">
+              <button type="button" class="scanner-toggle-btn" id="toggle-resume-scanner-btn">
+                <span>📄 Paste Resume / Project Summary to Auto-Extract Skills</span>
+              </button>
+              
+              <div class="resume-scanner-box hidden" id="resume-scanner-panel">
+                <textarea 
+                  id="resume-text-input" 
+                  class="custom-textarea" 
+                  placeholder="Paste your LinkedIn bio, GitHub readme, or resume experience paragraphs here..."
+                ></textarea>
+                <div class="scanner-actions">
+                  <button type="button" class="btn-secondary btn-sm" id="extract-resume-btn">
+                    🔍 Extract &amp; Add Detected Skills
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Error Alert Notice -->
+          <div id="analyzer-error-alert" class="alert-error hidden"></div>
+
+          <!-- Submit Button -->
+          <div class="submit-btn-wrapper">
+            <button type="submit" class="btn-analyze-submit" id="submit-analyze-btn">
+              <span>⚡ Analyze My Skill Gap</span>
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Analysis Results Section (Populated on Submit) -->
+      <div id="results-section" class="results-card hidden">
+        
+        <div class="results-header">
+          <div class="results-role-info">
+            <span class="icon-large" id="result-job-icon">🎯</span>
+            <div>
+              <h3 id="result-job-title">Data Analyst</h3>
+              <p id="result-job-desc">Data processing and statistical modeling role.</p>
+            </div>
+          </div>
+          <div class="results-actions">
+            <span class="status-pill ready" id="result-status-badge">✨ Evaluation Ready</span>
+            <button type="button" class="btn-export" onclick="exportGapReport()">
+              <span>🖨️ Export Report</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Visual Analytics Row: Chart + Lists -->
+        <div class="results-grid-row">
+          
+          <!-- Left: Doughnut Gauge -->
+          <div class="chart-panel-box">
+            <h4>Readiness Gauge</h4>
+            <div class="chart-relative-container">
+              <canvas id="matchChart"></canvas>
+              <div class="chart-center-overlay">
+                <div class="chart-center-val" id="chart-center-val">0%</div>
+                <div class="chart-center-lbl">Match Score</div>
+              </div>
+            </div>
+            
+            <div class="chart-stats-mini">
+              <div class="stat-item">
+                <div class="val" id="stat-match-pct">0%</div>
+                <div class="lbl">Match Rate</div>
+              </div>
+              <div class="stat-item">
+                <div class="val" id="stat-matched-count">0 / 0</div>
+                <div class="lbl">Matched</div>
+              </div>
+              <div class="stat-item">
+                <div class="val" id="stat-missing-count">0</div>
+                <div class="lbl">Missing</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Matched vs Missing Breakdown -->
+          <div class="skills-breakdown-box">
+            
+            <div class="skill-category-group matched-group">
+              <h4>
+                <span>✅ Skills You Have Mastered</span>
+                <span class="badge-subtle">Ready</span>
+              </h4>
+              <div class="skills-pills-wrap" id="matched-skills-container"></div>
+            </div>
+
+            <div class="skill-category-group missing-group">
+              <h4>
+                <span>❌ Missing Industry Competencies</span>
+                <span class="badge-subtle">Target Gap</span>
+              </h4>
+              <div class="skills-pills-wrap" id="missing-skills-container"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Prioritized Learning Roadmap Checklist -->
+        <div class="roadmap-box">
+          <div class="roadmap-box-header">
+            <h4>🗺️ Prioritized Learning Roadmap</h4>
+            <span class="badge-subtle">Sorted by Industry Priority (P1 &rarr; P3)</span>
+          </div>
+          
+          <div class="roadmap-items-list" id="roadmap-timeline-items"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 2: Interactive Presentation Deck -->
+  <section class="section" id="presentation">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Academic Presentation</span>
+        <h2 class="section-title">Capstone Slide Deck (16 Slides)</h2>
+        <p class="section-desc">
+          Navigate through our full project defense deck directly in your browser. 
+          Supports keyboard arrow navigation (<kbd>&larr;</kbd> / <kbd>&rarr;</kbd>), 
+          thumbnail jumps, speaker notes, and distraction-free fullscreen mode.
+        </p>
+      </div>
+
+      <div class="presentation-container" id="presentation-deck-wrapper">
+        
+        <!-- Deck Top Toolbar -->
+        <div class="deck-toolbar-top">
+          <div class="deck-title-meta">
+            <span class="deck-pill">Slide Deck</span>
+            <span id="slide-counter-display" class="deck-counter">1 / 16</span>
+          </div>
+
+          <div class="deck-actions-right">
+            <button class="deck-btn-icon" id="toggle-thumbs-btn" onclick="toggleThumbnailsDrawer()">
+              📑 Slide Index
+            </button>
+            <button class="deck-btn-icon" id="toggle-notes-btn" onclick="toggleSpeakerNotes()">
+              🎙️ Speaker Notes [N]
+            </button>
+            <button class="deck-btn-icon" id="fullscreen-deck-btn" onclick="toggleFullscreenDeck()">
+              ⛶ Fullscreen
+            </button>
+          </div>
+        </div>
+
+        <!-- Thumbnails Index Drawer -->
+        <div class="thumbnails-drawer hidden" id="slide-thumbnails-drawer">
+          <div class="thumbnails-grid" id="slide-thumbnails-grid"></div>
+        </div>
+
+        <!-- Slides Viewport -->
+        <div class="slides-viewport" id="slides-render-container"></div>
+
+        <!-- Speaker Notes Drawer -->
+        <div class="speaker-notes-panel hidden" id="speaker-notes-panel">
+          <h5>🎙️ Speaker Notes:</h5>
+          <div id="speaker-notes-content">Notes for this slide...</div>
+        </div>
+
+        <!-- Deck Progress Track -->
+        <div class="deck-progress-track">
+          <div class="deck-progress-fill" id="deck-progress-fill" style="width: 6.25%;"></div>
+        </div>
+
+        <!-- Deck Bottom Navigation Bar -->
+        <div class="deck-bottom-bar">
+          <button class="deck-nav-btn" onclick="prevSlide()">
+            <span>&larr; Previous</span>
+          </button>
+          
+          <span style="font-size:0.85rem;color:var(--text-dim);">Use &larr; / &rarr; keys or Spacebar to navigate</span>
+
+          <button class="deck-nav-btn" onclick="nextSlide()">
+            <span>Next &rarr;</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: System Architecture & Data Flow -->
+  <section class="section" id="architecture">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">System Design</span>
+        <h2 class="section-title">Architecture &amp; Data Pipeline</h2>
+        <p class="section-desc">
+          How SkillBridge processes raw inputs through normalization, mathematical set difference, 
+          and curated resource synthesis.
+        </p>
+      </div>
+
+      <div class="arch-diagram-card">
+        
+        <div class="arch-flow-flex">
+          
+          <div class="arch-node-box">
+            <div class="node-icon">👤</div>
+            <h4>1. User Input</h4>
+            <p>Target role selection + comma-separated or pasted skill text.</p>
+          </div>
+
+          <div class="arch-arrow">&rarr;</div>
+
+          <div class="arch-node-box">
+            <div class="node-icon">🔤</div>
+            <h4>2. Normalization</h4>
+            <p>Synonym engine resolves aliases (e.g. <code>postgres</code> &rarr; <code>sql</code>).</p>
+          </div>
+
+          <div class="arch-arrow">&rarr;</div>
+
+          <div class="arch-node-box">
+            <div class="node-icon">⚙️</div>
+            <h4>3. Gap Engine</h4>
+            <p>Set-intersection &amp; difference logic calculates readiness score.</p>
+          </div>
+
+          <div class="arch-arrow">&rarr;</div>
+
+          <div class="arch-node-box">
+            <div class="node-icon">📚</div>
+            <h4>4. Resource Mapper</h4>
+            <p>Pairs missing skills with verified free courses &amp; priority tiers.</p>
+          </div>
+
+          <div class="arch-arrow">&rarr;</div>
+
+          <div class="arch-node-box">
+            <div class="node-icon">📊</div>
+            <h4>5. Dashboard UI</h4>
+            <p>Chart.js doughnut graph, status pills, and interactive checklist.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Existing Solutions vs SkillBridge Comparison -->
+  <section class="section" id="comparison">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Market Differentiation</span>
+        <h2 class="section-title">Competitive Feature Comparison</h2>
+        <p class="section-desc">
+          Why existing career tools fall short for students, and how SkillBridge bridges the critical gap.
+        </p>
+      </div>
+
+      <div class="comparison-card" id="comparison-matrix-table"></div>
+    </div>
+  </section>
+
+  <!-- Section 5: Implementation Timeline & Team -->
+  <section class="section" id="timeline">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Engineering Execution</span>
+        <h2 class="section-title">8-Week Implementation Roadmap</h2>
+        <p class="section-desc">
+          Structured agile delivery across research, backend development, UI visualizations, and testing.
+        </p>
+      </div>
+
+      <div class="arch-diagram-card">
+        <div class="timeline-sprint-list">
+          <div class="timeline-row-card">
+            <div class="timeline-week-badge">Weeks 1–2</div>
+            <div class="timeline-content">
+              <h4>Research, Problem Formulation &amp; Schema Design</h4>
+              <p>Literature review, job market data extraction, synonym dictionary curation, and JSON database schema definition.</p>
+            </div>
+          </div>
+          <div class="timeline-row-card">
+            <div class="timeline-week-badge">Weeks 3–4</div>
+            <div class="timeline-content">
+              <h4>Backend API &amp; Normalization Logic</h4>
+              <p>Flask REST API implementation, synonym normalization algorithms, set-difference calculation endpoints, and unit testing.</p>
+            </div>
+          </div>
+          <div class="timeline-row-card">
+            <div class="timeline-week-badge">Weeks 5–6</div>
+            <div class="timeline-content">
+              <h4>Frontend UI &amp; Chart.js Integration</h4>
+              <p>Responsive glassmorphism interface, Chart.js doughnut gauges, tag inputs, and dynamic skill pills rendering.</p>
+            </div>
+          </div>
+          <div class="timeline-row-card">
+            <div class="timeline-week-badge">Week 7</div>
+            <div class="timeline-content">
+              <h4>Roadmap Checklist &amp; Dual Engine Execution</h4>
+              <p>Prioritized learning roadmap with persistent localStorage checks and hybrid Client/Flask API toggle.</p>
+            </div>
+          </div>
+          <div class="timeline-row-card">
+            <div class="timeline-week-badge">Week 8</div>
+            <div class="timeline-content">
+              <h4>Presentation Deck Integration &amp; Project Defense</h4>
+              <p>Embedding the 16-slide presentation deck, responsive cross-browser testing, PDF export formatting, and deployment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: AI Career Advisor Chat Simulator -->
+  <section class="section" id="ai-mentor">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interactive Future Scope</span>
+        <h2 class="section-title">AI Career Mentor Simulation</h2>
+        <p class="section-desc">
+          Ask questions about your analyzed gap, learning timelines, or project ideas. 
+          The mentor dynamically tailors its answers to your selected target role and missing skills!
+        </p>
+      </div>
+
+      <div class="advisor-wrapper">
+        <div class="ai-context-indicator hidden" id="ai-context-indicator">
+          Connected: <strong>Data Analyst</strong>
+        </div>
+
+        <!-- Chat messages container -->
+        <div class="advisor-chat-window" id="ai-chat-messages">
+          <div class="chat-bubble ai-bubble">
+            <div class="ai-avatar">🤖</div>
+            <div class="bubble-content">
+              <div class="bubble-text">
+                Hello! I am your <strong>SkillBridge AI Career Advisor</strong>. 
+                Run a gap analysis above or select a topic below to get personalized guidance on how to master your missing skills!
+              </div>
+              <span class="bubble-time">SkillBridge AI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick prompt chips -->
+        <div class="helper-title" style="margin-bottom:10px;">Suggested Questions:</div>
+        <div class="chips-row" style="margin-bottom:16px;">
+          <button class="skill-chip ai-quick-chip" data-prompt="Which missing skill should I learn first?">
+            🎯 Which missing skill should I learn first?
+          </button>
+          <button class="skill-chip ai-quick-chip" data-prompt="How long will it take to be interview-ready?">
+            ⏱️ How many weeks will this take?
+          </button>
+          <button class="skill-chip ai-quick-chip" data-prompt="What portfolio project should I build?">
+            💻 What portfolio project should I build?
+          </button>
+          <button class="skill-chip ai-quick-chip" data-prompt="What are common interview questions?">
+            📝 Common interview questions
+          </button>
+        </div>
+
+        <!-- Input bar -->
+        <div class="advisor-input-bar">
+          <input 
+            type="text" 
+            id="ai-input-field" 
+            class="custom-input" 
+            placeholder="Ask anything about your skill gap, study strategy, or career goals..."
+          />
+          <button type="button" class="btn-primary" id="ai-send-btn">
+            <span>Send 💬</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-branding">
+          <h3>🌉 SkillBridge</h3>
+          <p>Personalized Skill Gap Analyzer &amp; Learning Roadmap</p>
+          <p style="font-size:0.8rem;color:var(--text-dim);margin-top:4px;">
+            Designed for 3rd Year Capstone Defense &bull; Built with Python, Flask, HTML, CSS &amp; JavaScript
+          </p>
+        </div>
+        <div class="footer-nav">
+          <a href="#overview" class="skill-chip">Top ↑</a>
+          <a href="#analyzer" class="skill-chip">Analyzer</a>
+          <a href="#presentation" class="skill-chip">Slide Deck</a>
+          <a href="#ai-mentor" class="skill-chip">AI Advisor</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 SkillBridge Project Team. All rights reserved. Open-source educational toolkit.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/analyzer.js"></script>
+  <script src="js/presentation.js"></script>
+  <script src="js/ai-advisor.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

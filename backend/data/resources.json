@@ -1,0 +1,289 @@
+{
+  "python": {
+    "name": "Python Programming",
+    "resource": "https://www.freecodecamp.org/learn/scientific-computing-with-python/",
+    "priority": 1,
+    "duration": "3-4 Weeks",
+    "description": "Core syntax, data structures, OOP, and automation scripting."
+  },
+  "sql": {
+    "name": "SQL & Relational Databases",
+    "resource": "https://www.sqlbolt.com/",
+    "priority": 1,
+    "duration": "2 Weeks",
+    "description": "Query syntax, JOINs, aggregations, window functions, and indexing."
+  },
+  "pandas": {
+    "name": "Data Analysis with Pandas",
+    "resource": "https://pandas.pydata.org/docs/user_guide/10min.html",
+    "priority": 1,
+    "duration": "1-2 Weeks",
+    "description": "DataFrames, data cleaning, aggregation, reshaping, and time series."
+  },
+  "excel": {
+    "name": "Advanced Excel & Spreadsheets",
+    "resource": "https://www.freecodecamp.org/news/excel-tutorial/",
+    "priority": 2,
+    "duration": "1 Week",
+    "description": "VLOOKUP/XLOOKUP, Pivot tables, nested IF logic, and dashboard formulas."
+  },
+  "statistics": {
+    "name": "Statistical Thinking & Probability",
+    "resource": "https://www.khanacademy.org/math/statistics-probability",
+    "priority": 1,
+    "duration": "2-3 Weeks",
+    "description": "Hypothesis testing, distributions, regression, and variance."
+  },
+  "power bi": {
+    "name": "Power BI BI Dashboards",
+    "resource": "https://learn.microsoft.com/en-us/power-bi/",
+    "priority": 2,
+    "duration": "2 Weeks",
+    "description": "Data modeling, DAX queries, and executive KPI reporting."
+  },
+  "tableau": {
+    "name": "Tableau Visual Analytics",
+    "resource": "https://www.tableau.com/learn/training",
+    "priority": 2,
+    "duration": "2 Weeks",
+    "description": "Visual dashboards, calculated fields, and storytelling with data."
+  },
+  "data visualization": {
+    "name": "Data Storytelling & Visualization",
+    "resource": "https://www.freecodecamp.org/news/data-visualization/",
+    "priority": 2,
+    "duration": "1-2 Weeks",
+    "description": "Chart selection, color theory, Matplotlib, and Seaborn."
+  },
+  "html": {
+    "name": "HTML5 Semantic Structure",
+    "resource": "https://www.freecodecamp.org/learn/responsive-web-design/",
+    "priority": 1,
+    "duration": "1 Week",
+    "description": "Semantic markup, accessibility (a11y), forms, and SEO fundamentals."
+  },
+  "css": {
+    "name": "CSS3 & Modern Layouts",
+    "resource": "https://www.freecodecamp.org/learn/responsive-web-design/",
+    "priority": 1,
+    "duration": "2 Weeks",
+    "description": "Flexbox, CSS Grid, custom properties, animations, and responsive breakpoints."
+  },
+  "tailwind": {
+    "name": "Tailwind CSS Utility Styling",
+    "resource": "https://tailwindcss.com/docs/utility-first",
+    "priority": 2,
+    "duration": "1 Week",
+    "description": "Rapid modern UI development with utility-first CSS."
+  },
+  "javascript": {
+    "name": "Modern JavaScript (ES6+)",
+    "resource": "https://javascript.info/",
+    "priority": 1,
+    "duration": "3-4 Weeks",
+    "description": "Asynchronous JS, Promises, closures, DOM manipulation, and fetch API."
+  },
+  "react": {
+    "name": "React.js Framework",
+    "resource": "https://react.dev/learn",
+    "priority": 2,
+    "duration": "3 Weeks",
+    "description": "Components, state hooks (useState, useEffect), props, and context API."
+  },
+  "git": {
+    "name": "Git & GitHub Version Control",
+    "resource": "https://git-scm.com/book/en/v2",
+    "priority": 1,
+    "duration": "1 Week",
+    "description": "Branching workflows, commits, pull requests, merge conflict resolution."
+  },
+  "responsive design": {
+    "name": "Responsive Web Design",
+    "resource": "https://www.freecodecamp.org/learn/responsive-web-design/",
+    "priority": 2,
+    "duration": "1 Week",
+    "description": "Mobile-first layouts, media queries, and fluid typography."
+  },
+  "rest api": {
+    "name": "RESTful API Architecture",
+    "resource": "https://restfulapi.net/",
+    "priority": 2,
+    "duration": "1-2 Weeks",
+    "description": "HTTP methods, status codes, JSON payload design, and authentication tokens."
+  },
+  "flask": {
+    "name": "Python Flask Microframework",
+    "resource": "https://flask.palletsprojects.com/en/3.0.x/tutorial/",
+    "priority": 2,
+    "duration": "2 Weeks",
+    "description": "Routing, blueprinted controllers, request handling, and JSON serialization."
+  },
+  "fastapi": {
+    "name": "FastAPI Modern Python APIs",
+    "resource": "https://fastapi.tiangolo.com/tutorial/",
+    "priority": 2,
+    "duration": "2 Weeks",
+    "description": "High-performance asynchronous Python API development and OpenAPI docs."
+  },
+  "docker": {
+    "name": "Docker Containerization",
+    "resource": "https://docs.docker.com/get-started/",
+    "priority": 3,
+    "duration": "2 Weeks",
+    "description": "Dockerfiles, multi-stage builds, container networks, and Docker Compose."
+  },
+  "database design": {
+    "name": "Relational Database Design & Normalization",
+    "resource": "https://www.freecodecamp.org/news/database-design/",
+    "priority": 2,
+    "duration": "1-2 Weeks",
+    "description": "Entity-Relationship modeling, 1NF to 3NF normalization, foreign keys."
+  },
+  "machine learning": {
+    "name": "Machine Learning Fundamentals",
+    "resource": "https://www.coursera.org/learn/machine-learning",
+    "priority": 1,
+    "duration": "4 Weeks",
+    "description": "Supervised & unsupervised learning, classification, regression, loss functions."
+  },
+  "numpy": {
+    "name": "NumPy Numerical Computing",
+    "resource": "https://numpy.org/learn/",
+    "priority": 1,
+    "duration": "1 Week",
+    "description": "N-dimensional array manipulation, broadcasting, linear algebra operations."
+  },
+  "scikit-learn": {
+    "name": "Scikit-Learn ML Library",
+    "resource": "https://scikit-learn.org/stable/tutorial/index.html",
+    "priority": 2,
+    "duration": "2 Weeks",
+    "description": "Pipelines, cross-validation, hyperparameter tuning, metrics evaluation."
+  },
+  "deep learning": {
+    "name": "Deep Learning & Neural Networks",
+    "resource": "https://www.deeplearning.ai/",
+    "priority": 3,
+    "duration": "4 Weeks",
+    "description": "Backpropagation, activation functions, CNNs, RNNs, and Transformers."
+  },
+  "pytorch": {
+    "name": "PyTorch Deep Learning Framework",
+    "resource": "https://pytorch.org/tutorials/",
+    "priority": 3,
+    "duration": "3 Weeks",
+    "description": "Tensors, autograd, custom neural network modules, DataLoader pipelines."
+  },
+  "linux": {
+    "name": "Linux Shell & System Administration",
+    "resource": "https://linuxjourney.com/",
+    "priority": 1,
+    "duration": "2 Weeks",
+    "description": "Command line navigation, file permissions, process management, shell scripts."
+  },
+  "kubernetes": {
+    "name": "Kubernetes Container Orchestration",
+    "resource": "https://kubernetes.io/docs/tutorials/",
+    "priority": 3,
+    "duration": "3 Weeks",
+    "description": "Pods, Deployments, Services, Ingress controllers, and Helm charts."
+  },
+  "ci/cd": {
+    "name": "CI/CD Pipelines (GitHub Actions)",
+    "resource": "https://docs.github.com/en/actions",
+    "priority": 2,
+    "duration": "1-2 Weeks",
+    "description": "Automated testing, linting, build workflows, and deployment triggers."
+  },
+  "aws": {
+    "name": "Amazon Web Services (AWS Cloud)",
+    "resource": "https://aws.amazon.com/training/",
+    "priority": 2,
+    "duration": "3 Weeks",
+    "description": "EC2, S3, Lambda serverless, IAM security, and VPC networking."
+  },
+  "bash": {
+    "name": "Bash Automation Scripting",
+    "resource": "https://www.freecodecamp.org/news/bash-scripting-tutorial/",
+    "priority": 2,
+    "duration": "1 Week",
+    "description": "Automating system tasks, cron jobs, text parsing with grep/sed/awk."
+  },
+  "terraform": {
+    "name": "Terraform Infrastructure as Code",
+    "resource": "https://developer.hashicorp.com/terraform/tutorials",
+    "priority": 3,
+    "duration": "2 Weeks",
+    "description": "HCL syntax, providers, state management, and reproducible cloud environments."
+  },
+  "networking": {
+    "name": "Computer Networks & Protocols",
+    "resource": "https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff015e7d:the-internet",
+    "priority": 1,
+    "duration": "2 Weeks",
+    "description": "TCP/IP, UDP, DNS, OSI model, subnets, and routing protocols."
+  },
+  "wireshark": {
+    "name": "Wireshark Packet Analysis",
+    "resource": "https://www.wireshark.org/docs/",
+    "priority": 2,
+    "duration": "1 Week",
+    "description": "Network traffic sniffing, packet filtering, and security anomaly detection."
+  },
+  "ethical hacking": {
+    "name": "Ethical Hacking & Penetration Testing",
+    "resource": "https://www.tryhackme.com/",
+    "priority": 2,
+    "duration": "4 Weeks",
+    "description": "Reconnaissance, vulnerability scanning, exploitation concepts, OWASP Top 10."
+  },
+  "cryptography": {
+    "name": "Applied Cryptography & Security",
+    "resource": "https://www.coursera.org/learn/crypto",
+    "priority": 2,
+    "duration": "2 Weeks",
+    "description": "Symmetric/asymmetric encryption, hashing, RSA, TLS, and digital signatures."
+  },
+  "firewalls": {
+    "name": "Firewalls & Network Defense",
+    "resource": "https://www.cisco.com/c/en/us/products/security/firewalls/what-is-a-firewall.html",
+    "priority": 2,
+    "duration": "1 Week",
+    "description": "Stateful packet inspection, IDS/IPS configurations, security group policies."
+  },
+  "flutter": {
+    "name": "Flutter & Dart App Development",
+    "resource": "https://docs.flutter.dev/get-started/codelab",
+    "priority": 2,
+    "duration": "3 Weeks",
+    "description": "Cross-platform widgets, state management (Provider/Bloc), async APIs."
+  },
+  "react native": {
+    "name": "React Native Mobile Apps",
+    "resource": "https://reactnative.dev/docs/getting-started",
+    "priority": 2,
+    "duration": "3 Weeks",
+    "description": "Native UI components, navigation, device sensors, and bundle building."
+  },
+  "mobile ui/ux": {
+    "name": "Mobile UI/UX Design Guidelines",
+    "resource": "https://material.io/design",
+    "priority": 2,
+    "duration": "1 Week",
+    "description": "Touch targets, iOS Human Interface Guidelines & Material 3 standards."
+  },
+  "firebase": {
+    "name": "Firebase Backend-as-a-Service",
+    "resource": "https://firebase.google.com/docs",
+    "priority": 2,
+    "duration": "1 Week",
+    "description": "Firestore real-time DB, Auth, Cloud Messaging, and serverless functions."
+  },
+  "sqlite": {
+    "name": "Embedded SQLite Databases",
+    "resource": "https://www.sqlite.org/quickstart.html",
+    "priority": 2,
+    "duration": "1 Week",
+    "description": "Local embedded storage, schemas, and mobile relational queries."
+  }
+}
